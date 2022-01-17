@@ -1,0 +1,22 @@
+---
+# Creates scripts folder in em7admin home on all remote collectors if not present,
+# and uploads system_status.sh file located in the scripts folder in em7admin home.
+
+- hosts: collectors
+  gather_facts: no
+  tasks:
+  - find: 
+      paths: /tmp 
+      recurse: no 
+      patterns: "pre-upgrade-check-v2-*1?"
+      use_regex: yes
+    register: output
+
+#  - debug: var=output
+
+
+  - fetch:
+     src: "{{item.path}}"
+     dest: /home/em7admin/UPDATE-results-batch2/
+     flat: true
+    with_items: "{{ output.files }}"

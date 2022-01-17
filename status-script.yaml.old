@@ -1,0 +1,8 @@
+---
+# Push mode (connect to xenial1 and rsync-push to other hosts)
+- hosts: collectors
+  gather_facts: no
+  tasks:
+  - synchronize:
+     src: /home/em7admin/scripts/system_status.sh
+     dest: /home/em7admin/scripts/system_status.sh

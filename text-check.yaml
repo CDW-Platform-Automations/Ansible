@@ -1,0 +1,11 @@
+---
+# ansible-playbook fetch.yml
+
+- name: run tasks on test hosts
+  hosts: "*"
+  tasks:
+  - name: fetch test_file
+    fetch:
+      src: "/etc/chrony.d/servers.conf"
+      dest: "chrony_servers/{{ inventory_hostname }}/"
+      flat: true

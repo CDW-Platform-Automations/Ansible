@@ -1,0 +1,12 @@
+---
+# Creates scripts folder in em7admin home on all remote collectors if not present,
+# and uploads system_status.sh file located in the scripts folder in em7admin home.
+
+- hosts: collectors
+  gather_facts: no
+  tasks:
+#  - file: path="/home/em7admin/MariaDB-10.1.38-centos73-x86_64-server.rpm"
+#     state=directory
+  - synchronize:
+     src: /home/em7admin/MariaDB-10.1.38-centos73-x86_64-server.rpm
+     dest: /home/em7admin/MariaDB-10.1.38-centos73-x86_64-server.rpm
